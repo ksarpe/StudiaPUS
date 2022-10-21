@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 /**
  *
- * @author jaroc
+ * @author Kasper Janowski
  */
 public class TcpServer {
     
