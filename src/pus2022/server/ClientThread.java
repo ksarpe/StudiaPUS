@@ -1,4 +1,4 @@
-package pus2022;
+package pus2022.server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
