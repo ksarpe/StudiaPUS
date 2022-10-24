@@ -176,8 +176,10 @@ public class ClientUI extends JFrame implements ActionListener, KeyListener, Win
                 infoMessageBox("Copyright to Mariusz Jarocki, edited by Kasper Janowski");
                 break;
             case "Exit":
-                confirmMessageBox("Are you sure?");
-                System.exit(0);
+                if (confirmMessageBox("Are you sure?") == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                    break;
+                }
                 break;
         }
     }
@@ -204,7 +206,7 @@ public class ClientUI extends JFrame implements ActionListener, KeyListener, Win
                 }
                 printlnToPanel("← " + s);
             } catch (IOException e) {
-                if (JOptionPane.showConfirmDialog(null, e.getMessage() + "\n\n" + "Reconnect?", "Reconnect", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                if (confirmMessageBox("Recconect?")  == JOptionPane.YES_OPTION) {
                     in = null;
                 } else {
                     System.exit(0);
@@ -229,8 +231,8 @@ public class ClientUI extends JFrame implements ActionListener, KeyListener, Win
     private static void errorMessageBox(String msg) {
         JOptionPane.showMessageDialog(null, msg, "Error", JOptionPane.ERROR_MESSAGE);
     }
-    private static void confirmMessageBox(String msg){
-        JOptionPane.showConfirmDialog(null, msg, "Are you sure?", JOptionPane.YES_NO_OPTION);
+    private static int confirmMessageBox(String msg){
+        return JOptionPane.showConfirmDialog(null, msg, "Are you sure?", JOptionPane.YES_NO_OPTION);
     }
 
     public static void main(String[] args) {
